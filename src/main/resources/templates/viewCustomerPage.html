@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Customer Page</title>
+</head>
+<body>
+<div>
+    <h1>View customer details here</h1>
+    <h2>Details is submitted as follows</h2>
+    <h4>Customer ID: <!--/*@thymesVar id="cid" type=""*/-->
+    <span th:text="${cid}"/></h4>
+    <h4>Customer Name:
+        <!--/*@thymesVar id="cname" type=""*/-->
+        <span th:text="${cname}"/></h4>
+    <h4> Customer Email: <!--/*@thymesVar id="cemail" type=""*/-->
+    <span th:text="${cemail}" /></h4>
+</div>
+
+</body>
+</html>
