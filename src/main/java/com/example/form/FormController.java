@@ -3,11 +3,11 @@ package com.example.form;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class FormController {
@@ -43,4 +43,56 @@ public class FormController {
         mv.addObject(customers);
         return mv;
     }
+    //String metthod
+    /*@RequestMapping("/customers")
+    @ResponseBody
+    public String getCustomers(){
+
+        return customerRepository.findAll().toString();
+    }
+
+    @RequestMapping("/customers/{cid}")
+    @ResponseBody
+    public String getCustomers2(@PathVariable("cid") Long cid){
+
+        return customerRepository.findById(cid).toString();
+    }*/
+
+    //Chang the string method to a list method
+    @RequestMapping("/customers")
+    @ResponseBody
+    public List<Customers> getCustomers(){
+
+        return customerRepository.findAll();
+    }
+
+    @RequestMapping("/customers/{cid}")
+    @ResponseBody
+    public Optional<Customers> getCustomers2(@PathVariable("cid") Long cid){
+
+        return customerRepository.findById(cid);
+    }
+
+    @PostMapping("/customers")
+    public Customers getCustomers3(@RequestBody Customers customers){
+
+        customerRepository.save(customers);
+        return customers;
+    }
+
+    @DeleteMapping("/customers/{cid}")
+    public Customers getCustomers4(@PathVariable("cid") Long cid){
+
+        Customers c = customerRepository.getOne(cid);
+        customerRepository.delete(c);
+        return c;
+    }
+
+    @PutMapping(path="/customers", consumes = {"application/json"})
+    public Customers getCustomers5(@RequestBody Customers customers){
+
+        customerRepository.save(customers);
+        return customers;
+    }
+
 }
