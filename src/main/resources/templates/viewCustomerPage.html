@@ -8,13 +8,17 @@
 <div>
     <h1>View customer details here</h1>
     <h2>Details is submitted as follows</h2>
-    <h4>Customer ID: <!--/*@thymesVar id="cid" type=""*/-->
+    <form action="getdetails" method="post">
+        <input type="number" name="cid">
+        <input type="submit" value="Submit">
+    </form>
+    <!--<h4>Customer ID: /*@thymesVar id="cid" type=""*/
     <span th:text="${cid}"/></h4>
     <h4>Customer Name:
-        <!--/*@thymesVar id="cname" type=""*/-->
+        /*@thymesVar id="cname" type=""*/
         <span th:text="${cname}"/></h4>
-    <h4> Customer Email: <!--/*@thymesVar id="cemail" type=""*/-->
-    <span th:text="${cemail}" /></h4>
+    <h4> Customer Email: /*@thymesVar id="cemail" type=""*/
+    <span th:text="${cemail}" /></h4>-->
 </div>
 
 </body>
